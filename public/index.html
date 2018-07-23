@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event RSVP</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+
+<body>
+    <p>What up dawgs</p>
+
+    <form id='form' action='./update' method='post' enctype="multipart/form-data">
+        <fieldset>
+            <legend>Hi "New Money Source", please enter info below</legend>
+            <section>
+                <label for="contactname">Name</label>
+                <input type='text' id='contactname' name='contactname' autofocus>
+            </section>
+
+            <section>
+                <label for='useremail'>Email</label>
+                <input type='email' id=useremail name='useremail'>
+            </section>
+
+            <section>
+                <label for="attending">I will be there!</label>
+                <input type='radio' id='attending' name='rsvp' value='attending'>
+                <label for="ghosting">I can't make it</label>
+                <input type='radio' id='ghosting' name='rsvp' value='notAttending'>
+            </section>
+
+
+            <section>
+                <label for="guestCount">Bringing Guests?</label>
+                <select name="guestCount" id="guestCount">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+            </section>
+
+            <button type="submit" id='submit'>Submit</button>
+
+        </fieldset>
+
+
+    </form>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

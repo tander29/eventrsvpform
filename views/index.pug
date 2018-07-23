@@ -1,0 +1,33 @@
+html
+    head
+        title= "PugLife"
+    body
+        h1= "Form this"
+        form(id=form method='POST' enctype='multipart/form-data')
+            fieldset
+                legend= 'This is Legend'
+                label(for="contactname")= 'Name'
+                input(type="text" id='contactname' name='contactname' autofocus)
+
+                label(for="useremail")='Email'
+                input(type='email' id='useremail' name='useremail')
+
+                label(for="attending")
+                input(type='radio' id='attending' name='rsvp' value='attending')
+
+                label(for="ghosting")
+                input(type="radio" id='ghosting' name='rsvp' value='notAttending')
+
+                label(for="guestCount")
+                select(name="guestCount" id='guestCount')
+                    option(value="0")= 0
+                    option(value="1")= 1
+                    option(value="2")= 2
+                    option(value="3")= 3
+                    option(value="4")= 4
+                    option(value="5")= 5
+                    option(value="6")= 6
+                    option(value="7")= 7
+                    option(value="8")= 8
+
+                input(type="submit" id='submit')
