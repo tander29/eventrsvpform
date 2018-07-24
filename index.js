@@ -5,7 +5,8 @@ const port = 3000
 const app = express();
 
 app.use(express.static('public/'));
-app.use(express.json());
+// app.use(express.json());
+app.use(express.urlencoded())
 app.set('view engine', 'pug')
 let masterguestList = {}
 // app.use(express.urlencoded({ extended: true }))
@@ -52,13 +53,13 @@ app.get('/guests', (req, res) => {
     res.render('guests', masterguestList)
 })
 
-function updateMongoose(user) {
+function updateMongoose(reqBody) {
 
     newObject = new Response({
-        name: user.name,
-        email: user.email,
-        rsvp: user.rsvp,
-        guests: user.guests
+        name: reqBody.name,
+        email: reqBody.email,
+        rsvp: reqBody.rsvp,
+        guests: reqBody.guestCount
     })
 
     newObject.save(function (err, userInfo) {
@@ -68,3 +69,10 @@ function updateMongoose(user) {
 }
 
 app.listen(port)
+
+
+
+
+
+
+

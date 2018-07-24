@@ -3,7 +3,9 @@ html
         title= "Guest List"
     link(rel="stylesheet", href="stylesheet.css")
     body
-        button(onclick='window.location="/"')= "Home"
-        button(onclick='window.location="/guests"')= "Guest List"
+        a(href="/")
+            button= "Home"
+        a(href='guests')
+            button= "Guest List"
         h1="Thank you for your response"
         

@@ -4,15 +4,15 @@ html
         link(rel="stylesheet", href="stylesheet.css")
     body
         h1= "Form this"
-        form(id='form' method='POST' enctype='multipart/form-data')
+        form(id='form' method='POST' action='/reply')
             fieldset
                 legend= 'This is Legend'
                 section
                     label(for="contactname")= 'Name'
-                    input(type="text" id='contactname' name='contactname' autofocus autocomplete='name')
+                    input(type="text" id='contactname' name='name' autofocus autocomplete='name')
                 section
                     label(for="useremail")='Email'
-                    input(type='email' id='useremail' name='useremail' autocomplete='email')
+                    input(type='email' id='useremail' name='email' autocomplete='email')
 
                 section
                     label(for="attending")= "I am attending!!"
@@ -35,6 +35,7 @@ html
 
                 input(type="submit" id='submit')
                 input(type='reset' id='reset')
-        button(id='guestList')= "Guest List"
+        a(href="/guests")
+            button= "Guest List"
 
                 script(src="main.js")
