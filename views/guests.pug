@@ -1,4 +1,16 @@
 html
     head
+        title= "Guest List"
+    link(rel="stylesheet", href="stylesheet.css")
     body
-        h1="does this work??"
+        button(onclick='window.location="/"')= "Home"
+        h1="People attending"
+        each item in attending
+            div(class='unit')= item.name
+                div= "Guest Count " + item.guests
+        h3="People not attending"
+        each item in notattending
+            div= item.name
+
+        
+        

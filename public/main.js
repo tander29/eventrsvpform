@@ -1,8 +1,13 @@
 let submit = document.getElementById('submit')
 let form = document.getElementById('form')
-
+let guest = document.getElementById('guestList')
 
 submit.addEventListener('click', registerUser)
+guest.addEventListener('click', () => {
+
+    window.location = '/guests';
+
+})
 
 console.log("hey")
 function registerUser() {
@@ -28,10 +33,9 @@ function postData(info) {
     }
 
     fetch('./reply', postOptions)
-        .then(res => res.json())
-        .then(data => {
-            console.log('what did we send back??', data)
-        })
+
+    window.location = '/submission'
 
 }
+
 

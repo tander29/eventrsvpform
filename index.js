@@ -7,6 +7,8 @@ const app = express();
 app.use(express.static('public/'));
 app.use(express.json());
 app.set('view engine', 'pug')
+let masterguestList = {}
+// app.use(express.urlencoded({ extended: true }))
 
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
@@ -20,25 +22,37 @@ let responseSchema = mongoose.Schema({
 })
 let Response = mongoose.model('Response', responseSchema)
 
-// app.get('/guests', (req, res) => {
+app.get('/', (req, res) => {
+    res.render('index')
+})
 
-// })
+app.get('/submission', (req, res) => {
+    res.render('submission')
+})
 
 app.post('/reply', (req, res) => {
+    // res.status(200)
     console.log('request this', req.body)
     updateMongoose(req.body)
-    let sendback = { one: 1, two: 4, string: 'yes' }
-    // res.send(sendback)
-    res.render('guests', sendback)
+    res.render('submission')
+})
+
+app.get('/guests', (req, res) => {
+    Response.find({ rsvp: /^attend/ }, function (err, responseArray) {
+        if (err) return console.error(err);
+        console.log('dem responses', responseArray)
+        masterguestList.attending = responseArray
+    })
+    Response.find({ rsvp: /^not/ }, function (err, responseArray) {
+        if (err) return console.error(err);
+        console.log('dem responses', responseArray)
+        masterguestList.notattending = responseArray
+    })
+
+    res.render('guests', masterguestList)
 })
 
 function updateMongoose(user) {
-    // let responseSchema = mongoose.Schema({
-    //     name: String,
-    //     email: String,
-    //     rsvp: String,
-    //     guests: Number
-    // })
 
     newObject = new Response({
         name: user.name,
@@ -51,17 +65,6 @@ function updateMongoose(user) {
         if (err) return console.error(err)
         console.log('added new bad boy to that database')
     })
-
-    Response.find({ rsvp: /^attend/ }, function (err, responseArray) {
-        if (err) return console.error(err);
-        console.log('dem responses', responseArray)
-    })
 }
-
-
-
-
-
-
 
 app.listen(port)
